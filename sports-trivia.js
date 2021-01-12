@@ -26,21 +26,29 @@ $(document).ready(function(event){
         var height=$(this).height()+6
         var width=$(this).width()+16
         console.log(x, y, height, width)
-        var initialXMovement=windowWidth-x-width-25;
+        var initialXMovement=windowWidth-x-width-5;
         var translateMovement="translate("+initialXMovement+"px, 0)"
-        $(this).parent().toggleClass("moving")
-        $(this).parent().css("transform", translateMovement)
+        $(this).toggleClass("moving")
+        $(this).css("transform", translateMovement)
         $(this).toggleClass("moving-button")
         var className="#"+number
         setTimeout(function(){
-            var direction=-1;
+            let counter=0
+
             setInterval(function(){
-                let translateMovement="translate("+(windowWidth-width-400)*direction+"px, 0)"
-                $(className).parent().css("transform", translateMovement)
-                console.log(translateMovement)
-                direction*=-1
+                if (counter%2==1) {
+                    let translateMovement = "translate(" + (windowWidth -x- width-5) + "px, 0)"
+                    $(className).css("transform", translateMovement)
+                    console.log(translateMovement)
+                } else{
+                    let translateMovement = "translate(" + (-x+5) + "px, 0)"
+                    $(className).css("transform", translateMovement)
+                    console.log(translateMovement)
+                }
+                counter++
             }, 3100)
         }, 2100)
+
     })
     $(document).on("mouseover",".moving-button", function(){
         $("body").css("background-color", "red")

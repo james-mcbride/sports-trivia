@@ -5,7 +5,7 @@ body, html, #buttons{
 }
 body{
     padding: 10px;
-    border: 25px solid black;
+    border: 5px solid black;
 }
 /*#buttons{position: absolute; top: 0; right: 0; bottom: 0; left: 0;}*/
 
@@ -28,4 +28,7 @@ button{
 
 .moving-button{
     color: red;
+    position: relative;
+    z-index:1000;
 }
+
