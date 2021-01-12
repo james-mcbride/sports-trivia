@@ -1,7 +1,7 @@
 $(document).ready(function(event){
-    var windowWidth=window.innerWidth;
-    var windowHeight=window.innerHeight
-    var i=1;
+    let windowWidth=window.innerWidth;
+    let windowHeight=window.innerHeight
+    let i=1;
     while (i<100){
         $("#buttons").append("<div id='numbers' class='col-1'><button id='"+i+"'>"+i+"</button></div>")
         i++
@@ -10,10 +10,10 @@ $(document).ready(function(event){
 
     }, 1000)
     $("button").click(function(event){
-        var number = $(this).attr("id")
+        let number = $(this).attr("id")
         function getOffset( el ) {
-            var _x = 0;
-            var _y = 0;
+            let _x = 0;
+            let _y = 0;
             while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
                 _x += el.offsetLeft - el.scrollLeft;
                 _y += el.offsetTop - el.scrollTop;
@@ -21,13 +21,13 @@ $(document).ready(function(event){
             }
             return { top: _y, left: _x };
         }
-        var x = getOffset( document.getElementById(number) ).left;
-        var y= getOffset( document.getElementById(number) ).top;
-        var height=$(this).height()+6
-        var width=$(this).width()+16
+        let x = getOffset( document.getElementById(number) ).left;
+        let y= getOffset( document.getElementById(number) ).top;
+        let height=$(this).height()+6
+        let width=$(this).width()+16
         console.log(x, y, height, width)
-        var initialXMovement=windowWidth-x-width-5;
-        var translateMovement="translate("+initialXMovement+"px, 0)"
+        let initialXMovement=windowWidth-x-width-5;
+        let translateMovement="translate("+initialXMovement+"px, 0)"
         $(this).toggleClass("moving")
         $(this).css("transform", translateMovement)
         $(this).toggleClass("moving-button")
@@ -54,5 +54,10 @@ $(document).ready(function(event){
         $("body").css("background-color", "red")
     })
 })
+
+
+
+
+
 
 
