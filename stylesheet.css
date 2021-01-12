@@ -4,11 +4,28 @@ body, html, #buttons{
     margin: 0;
 }
 body{
-    padding: 5px;
+    padding: 10px;
+    border: 25px solid black;
 }
 /*#buttons{position: absolute; top: 0; right: 0; bottom: 0; left: 0;}*/
 
 
 .col-1{
-    height: 11%
+    height: 11%;
+    text-align: center;
+}
+button{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.moving{
+    transition-property: transform;
+    transition-duration: 3s;
+   transition-timing-function: linear;
+
+}
+
+.moving-button{
+    color: red;
 }
