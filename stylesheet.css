@@ -9,7 +9,9 @@ body{
 }
 /*#buttons{position: absolute; top: 0; right: 0; bottom: 0; left: 0;}*/
 
-
+.hidden{
+    visibility: hidden;
+}
 .col-1{
     height: 11%;
     text-align: center;
@@ -31,4 +33,25 @@ button{
     position: relative;
     z-index:1000;
 }
+
+#start-page{
+    text-align: center;
+
+}
+form{
+    display: flex;
+    justify-content: center;
+    margin: 25px
+}
+form div{
+    margin: 0 10px;
+}
+select{
+    margin-left: 10px;
+}
+
+#gameSettings{
+    font-size: x-large;
+}
+
 

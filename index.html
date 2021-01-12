@@ -7,7 +7,27 @@
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-<div id="buttons" class="row">
+<div id="start-page">
+    <div id="gameSettings"><img height="300px" src="img/National_Football_League_logo.svg"><br><strong>Welcome to NFL Jersey Trivia!</strong></div>
+    <form class="form-inline">
+        <div class="form-group mr-2">
+            <label class="" for="difficulty">Select your difficulty</label>
+            <select id="difficulty" class="form-control">
+                <option>Normal</option>
+                <option>Hard</option>
+            </select>
+        </div>
+        <div class="form-group mr-2">
+            <label class="" for="time-Period">Time-Period</label>
+            <select id="time-Period" class="form-control">
+                <option>2000s</option>
+                <option>All-Time</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin: 0;">Start</button>
+    </form>
+</div>
+<div id="buttons" class="row hidden">
 
 </div>
 
