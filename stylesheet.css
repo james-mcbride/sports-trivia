@@ -9,8 +9,8 @@ body{
 }
 /*#buttons{position: absolute; top: 0; right: 0; bottom: 0; left: 0;}*/
 
-.hidden{
-    visibility: hidden;
+#buttons, #trivia{
+    display: none;
 }
 .col-1{
     height: 11%;
@@ -53,5 +53,22 @@ select{
 #gameSettings{
     font-size: x-large;
 }
+
+#trivia{
+    text-align: center;
+    height: 50px;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+
+#score{
+    display: flex;
+}
+#score div{
+    border: 2px solid black;
+    width: 50px;
+}
+
 
 

@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="start-page">
-    <div id="gameSettings"><img height="300px" src="img/National_Football_League_logo.svg"><br><strong>Welcome to NFL Jersey Trivia!</strong></div>
+    <div id="gameSettings"><img height="300px" src="img/National_Football_League_logo.svg"><br>Welcome to NFL Jersey Trivia!</div>
     <form class="form-inline">
         <div class="form-group mr-2">
             <label class="" for="difficulty">Select your difficulty</label>
@@ -24,8 +24,15 @@
                 <option>All-Time</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary" style="margin: 0;">Start</button>
+        <button type="submit" class="btn btn-primary" style="margin: 0;" id="start-button">Start</button>
     </form>
+
+</div>
+<div id="trivia">
+    <div><img height="40px" src="img/National_Football_League_logo.svg" style="float: left"></div>
+    <div id="triviaQuestion">Welcome to NFL Jersey Trivia! Can you answer all 99 questions? Look out for the moving boxes!</div>
+    <div id="score"><div>Score</div><div id="remaining">0</div></div>
+    <div><img height="40px" src="img/National_Football_League_logo.svg" style="float: right"></div>
 </div>
 <div id="buttons" class="row hidden">
 
@@ -36,5 +43,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script src="sports-trivia.js"></script>
+<script src="NFL-players.js"></script>
 </body>
 </html>
