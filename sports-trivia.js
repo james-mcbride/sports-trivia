@@ -1,15 +1,28 @@
 $(document).ready(function(event){
 let windowWidth=window.innerWidth;
 let windowHeight=window.innerHeight
-let i=1;
-let playersPickedArray=[]
-while (i<100){
-    $("#buttons").append("<div id='numbers' class='col-1'><button class='triviaButtons' id='"+i+"'>"+i+"</button></div>")
-    i++
-}
-var intervals=[]
+// let i=1;
+// let playersPickedArray=[]
+// while (i<100){
+//     $("#buttons").append("<div id='numbers' class='col-1'><button class='triviaButtons' id='"+i+"'>"+i+"</button></div>")
+//     i++
+// }
+// var intervals=[]
+    var intervals=[]
+    var gameCounter=0;
 
-    $("#start-button").click(function(event){
+    $(".start-button").click(function(event){
+        $("#remaining").html(0)
+        $("#gameOver").hide()
+        let i=1;
+        let playersPickedArray=[]
+        while (i<100){
+            $("#buttons").append("<div id='numbers' class='col-1'><button class='triviaButtons' id='"+i+"'>"+i+"</button></div>")
+            i++
+            let id="#"+i
+            $(id).css("transform", "none")
+        }
+
         event.preventDefault()
         $("#start-page").hide()
         $("#buttons").show()
@@ -26,11 +39,9 @@ var intervals=[]
         let jerseyNumberArrayLength = filteredPlayersArray[jerseyArrayIndex].length;
         let randomPlayerIndex = Math.round(Math.random() * (jerseyNumberArrayLength - 1))
         let randomPlayer = filteredPlayersArray[jerseyArrayIndex][randomPlayerIndex]
-        setTimeout(function () {
-            $("#triviaQuestion").text(`What was the jersey number of ${randomPlayer[0]} ${randomPlayer[1]} from ${randomPlayer[2]}-${randomPlayer[3]}?`)
-            $("#trivia").css("display", "flex")
-            $("#score").show()
-        }, 3000)
+        $("#triviaQuestion").text(`What was the jersey number of ${randomPlayer[0]} ${randomPlayer[1]} from ${randomPlayer[2]}-${randomPlayer[3]}?`)
+        $("#trivia").css("display", "flex")
+        $("#score").show()
 
 
         $(".triviaButtons").click(function (event) {
@@ -105,37 +116,42 @@ var intervals=[]
         }
         $("#gameOver").show()
         $("#trivia").hide()
-    })
-    })
-    $("#start-button").click(function(event){
-        let i=1;
-        let playersPickedArray=[]
-        for (let j=0; i<intervals.length; j++){
+        gameCounter++
+        for (let j=0; j<intervals.length; j++){
             clearInterval(intervals[j])
         }
-        $('#buttons').load(document.URL +  '')
-        while (i<100){
-            $("#buttons").append("<div id='numbers' class='col-1'><button class='triviaButtons' id='"+i+"'>"+i+"</button></div>")
-            i++
-            let id="."+i
-            $(id).css("transform", "none")
-
-
-        }
-        $("#gameOver").hide()
-        // event.preventDefault()
-        // playersPickedArray=[]
-        // $("#buttons").show()
-        // i=1;
-        // while (i<100){
-        //     $("#buttons").append("<div id='numbers' class='col-1'><button class='triviaButtons' id='"+i+"'>"+i+"</button></div>")
-        //     i++
-        // }
-        // $("#gameOver").hide()
-        // $("#trivia").show()
-        // $("#score").hide()
-        // $("#buttons").css("display", "flex")
+        intervals=[]
     })
+    })
+    // $("#start-button").click(function(event){
+    //     let i=1;
+    //     let playersPickedArray=[]
+    //     for (let j=0; j<intervals.length; j++){
+    //         clearInterval(intervals[j])
+    //     }
+    //     $('#buttons').load(document.URL +  '')
+    //     while (i<100){
+    //         $("#buttons").append("<div id='numbers' class='col-1'><button class='triviaButtons' id='"+i+"'>"+i+"</button></div>")
+    //         i++
+    //         let id="#"+i
+    //         $(id).css("transform", "none")
+    //
+    //
+    //     }
+    //     $("#gameOver").hide()
+    //     // event.preventDefault()
+    //     // playersPickedArray=[]
+    //     // $("#buttons").show()
+    //     // i=1;
+    //     // while (i<100){
+    //     //     $("#buttons").append("<div id='numbers' class='col-1'><button class='triviaButtons' id='"+i+"'>"+i+"</button></div>")
+    //     //     i++
+    //     // }
+    //     // $("#gameOver").hide()
+    //     // $("#trivia").show()
+    //     // $("#score").hide()
+    //     // $("#buttons").css("display", "flex")
+    // })
 })
 
 
