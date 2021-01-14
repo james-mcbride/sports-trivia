@@ -102,6 +102,6 @@ var playerArray=[
 
 let playersArrayCleaned=playerArray.map(number=>number.map(player=> player.split(/\s/)))
 
-let filteredPlayersArray=playersArrayCleaned.map(number=>number.filter(player=>player[0]!=="Player" && player.length===5 && Number(player[4])>22 && Number(player[3]>2010)))
+// let filteredPlayersArray=playersArrayCleaned.map(number=>number.filter(player=>player[0]!=="Player" && player.length===5 && Number(player[4])>22 && Number(player[3]>2010)))
 
-console.log(filteredPlayersArray)
+// console.log(filteredPlayersArray)
