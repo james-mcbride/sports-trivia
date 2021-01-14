@@ -1,17 +1,14 @@
-// $(document).ready(function(event){
+$(document).ready(function(event){
 let windowWidth=window.innerWidth;
 let windowHeight=window.innerHeight
 let i=1;
-let randomArray=[]
+let playersPickedArray=[]
 while (i<100){
-    randomArray.push[i]
     $("#buttons").append("<div id='numbers' class='col-1'><button class='triviaButtons' id='"+i+"'>"+i+"</button></div>")
     i++
 }
+var intervals=[]
 
-
-$(".row").toggleClass("hidden")
-    $("#trivia").toggleClass("hidden")
     $("#start-button").click(function(event){
         event.preventDefault()
         $("#start-page").hide()
@@ -21,6 +18,10 @@ $(".row").toggleClass("hidden")
         $("#buttons").css("display", "flex")
 
         let jerseyArrayIndex = Math.round(Math.random() * 99)
+        while (playersPickedArray.indexOf(jerseyArrayIndex)!==-1){
+            jerseyArrayIndex = Math.round(Math.random() * 99)
+        }
+        playersPickedArray.push(jerseyArrayIndex)
         let jerseyNumber=jerseyArrayIndex+1
         let jerseyNumberArrayLength = filteredPlayersArray[jerseyArrayIndex].length;
         let randomPlayerIndex = Math.round(Math.random() * (jerseyNumberArrayLength - 1))
@@ -50,31 +51,35 @@ $(".row").toggleClass("hidden")
                 }
             let correctButton="#"+jerseyNumber
 
-                let x = getOffset(document.getElementById(number.toString())).left;
-                let y = getOffset(document.getElementById(number.toString())).top;
-                let height = $(this).height() + 6
-                let width = $(this).width() + 16
+                let x = getOffset(document.getElementById(jerseyNumber.toString())).left;
+                let y = getOffset(document.getElementById(jerseyNumber.toString())).top;
+                let height = $(correctButton).height() + 6
+                let width = $(correctButton).width() + 16
                 let initialXMovement = windowWidth - x - width - 20;
                 let translateMovement = "translate(" + initialXMovement + "px, 0)"
-                $(this).toggleClass("moving")
-                $(this).css("transform", translateMovement)
-                $(this).toggleClass("moving-button")
-                var className = "#" + number
+                $(correctButton).toggleClass("moving")
+                $(correctButton).css("transform", translateMovement)
+                $(correctButton).toggleClass("moving-button")
                 setTimeout(function () {
                     let counter = 0
-
-                    setInterval(function () {
+                    let i= setInterval(function () {
                         if (counter % 2 == 1) {
                             let translateMovement = "translate(" + (windowWidth - x - width - 20) + "px, 0)"
-                            $(className).css("transform", translateMovement)
+                            $(correctButton).css("transform", translateMovement)
                         } else {
                             let translateMovement = "translate(" + (-x + 5) + "px, 0)"
-                            $(className).css("transform", translateMovement)
+                            $(correctButton).css("transform", translateMovement)
                         }
                         counter++
                     }, 3100)
+                    intervals.push(i)
                 }, 2100)
+
                 jerseyArrayIndex = Math.round(Math.random() * 99)
+                while (playersPickedArray.indexOf(jerseyArrayIndex)!==-1){
+                    jerseyArrayIndex = Math.round(Math.random() * 99)
+                }
+                playersPickedArray.push(jerseyArrayIndex)
                 jerseyNumber=jerseyArrayIndex+1
                 jerseyNumberArrayLength = filteredPlayersArray[jerseyArrayIndex].length;
                 randomPlayerIndex = Math.round(Math.random() * (jerseyNumberArrayLength - 1))
@@ -93,10 +98,45 @@ $(".row").toggleClass("hidden")
         //     $("#remaining").html(currentRemaining)
         // })
     $(document).on("mouseover",".moving-button", function(){
-        $("body").css("background-color", "red")
+        $("#buttons").html("")
+        $("#gameScore").html($("#remaining").text())
+        if (Number($("#remaining").html())>Number($("#highScore").html())){
+            $("#highScore").html($("#remaining").html())
+        }
+        $("#gameOver").show()
+        $("#trivia").hide()
     })
     })
-// })
+    $("#start-button").click(function(event){
+        let i=1;
+        let playersPickedArray=[]
+        for (let j=0; i<intervals.length; j++){
+            clearInterval(intervals[j])
+        }
+        $('#buttons').load(document.URL +  '')
+        while (i<100){
+            $("#buttons").append("<div id='numbers' class='col-1'><button class='triviaButtons' id='"+i+"'>"+i+"</button></div>")
+            i++
+            let id="."+i
+            $(id).css("transform", "none")
+
+
+        }
+        $("#gameOver").hide()
+        // event.preventDefault()
+        // playersPickedArray=[]
+        // $("#buttons").show()
+        // i=1;
+        // while (i<100){
+        //     $("#buttons").append("<div id='numbers' class='col-1'><button class='triviaButtons' id='"+i+"'>"+i+"</button></div>")
+        //     i++
+        // }
+        // $("#gameOver").hide()
+        // $("#trivia").show()
+        // $("#score").hide()
+        // $("#buttons").css("display", "flex")
+    })
+})
 
 
 

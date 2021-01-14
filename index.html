@@ -24,7 +24,7 @@
                 <option>All-Time</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary" style="margin: 0;" id="start-button">Start</button>
+        <button type="submit" class="btn btn-primary start-button" style="margin: 0;" id="start-button">Start</button>
     </form>
 
 </div>
@@ -36,6 +36,27 @@
 </div>
 <div id="buttons" class="row hidden">
 
+</div>
+<div id="gameOver">
+    <h1>Game Over!</h1>
+    <div id="score-keeper" >
+        <div class="score">
+            <div class="grid">High Score</div>
+            <div id="highScore" class="grid">0</div>
+        </div>
+        <div class="score">
+            <div class="grid">Your Score</div>
+            <div class="grid" id="gameScore">0</div>
+        </div>
+    </div>
+    <div id="newGameOptions">
+        <button id="playAgain" class="start-button">
+            Play Again!
+        </button>
+        <button id="mainMenu">
+            Return to Main Menu
+        </button>
+    </div>
 </div>
 
 

@@ -70,5 +70,49 @@ select{
     width: 50px;
 }
 
+#score-keeper{
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    z-index: 1000;
+    color: black;
+}
+.grid{
+    border: 2px black solid;
+    justify-content: center;
+    width: 100px;
+
+}
+.score{
+    display: flex;
+    width: 200px;
+
+}
+
+#gameOver{
+    position: absolute;
+    display: none;
+    top: 25%;
+    left: 25%;
+    background-color: white;
+    height: 50%;
+    width: 50%;
+    padding-top: 10%;
+}
+#gameOver div, h1{
+    margin: 0 auto;
+    text-align: center;
+
+
+}
+#gameOver h1{
+    margin-bottom: 15px;
+}
+
+#newGameOptions button{
+    margin: 10px 0;
+}
+
+
 
 
