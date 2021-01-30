@@ -1,6 +1,6 @@
 $(document).ready(function(event) {
     let windowWidth = window.innerWidth;
-    let windowHeight = window.innerHeight
+    let windowHeight = window.innerHeight;
     var intervals = []
     var gameCounter = 0;
 
@@ -91,33 +91,59 @@ $(document).ready(function(event) {
             let y = getOffset(document.getElementById(jerseyNumber.toString())).top;
             let height = $(correctButton).height() + 6
             let width = $(correctButton).width() + 16
-            let initialXMovement = windowWidth - x - width - 20;
+            let initialXMovement = windowWidth - x - width - 5;
+            let initialYMovement = windowHeight - y - height-5;
 
-            //The next few lines add a transform translate style, moving the button its initial movement to the right side of the page,
+            //This variable will represent a random number that is either 0 or 1. This will decide if the box moves horizontal or vertical.
+            let randomDirectionNumber = Math.round(Math.random());
+
+            //The next few lines add a transform translate style, moving the button its initial movement to the right side or bottom of the page,
             //and then the full distance back and forth across the whole page.
-            let translateMovement = "translate(" + initialXMovement + "px, 0)"
+            let translateMovement;
+            if (randomDirectionNumber===0) {
+                translateMovement = "translate(" + initialXMovement + "px, 0)";
+            } else{
+                translateMovement= "translate(0," + initialYMovement + "px)";
+            }
             $(correctButton).toggleClass("moving")
             $(correctButton).css("transform", translateMovement)
 
             //adds a class to the button when it begins moving. This will be used as our detector for our hover function later on.
-            $(correctButton).toggleClass("moving-button")
+            $(correctButton).toggleClass("moving-button");
 
             //this function will use setTimeout to wait until the button moves to the far right side of the screen, and then sets an interval,
             //to move back and forth across the screen for the amount of time it takes for the button to travel the distance.
-            setTimeout(function () {
-                let counter = 0
-                let i = setInterval(function () {
-                    if (counter % 2 == 1) {
-                        let translateMovement = "translate(" + (windowWidth - x - width - 20) + "px, 0)"
-                        $(correctButton).css("transform", translateMovement)
-                    } else {
-                        let translateMovement = "translate(" + (-x + 5) + "px, 0)"
-                        $(correctButton).css("transform", translateMovement)
-                    }
-                    counter++
-                }, 3100)
-                intervals.push(i)
-            }, 2100)
+            if (randomDirectionNumber===0) {
+                setTimeout(function () {
+                    let counter = 0
+                    let i = setInterval(function () {
+                        if (counter % 2 == 1) {
+                            let translateMovement = "translate(" + (windowWidth - x - width - 5) + "px, 0)"
+                            $(correctButton).css("transform", translateMovement)
+                        } else {
+                            let translateMovement = "translate(" + (-x + 5) + "px, 0)"
+                            $(correctButton).css("transform", translateMovement)
+                        }
+                        counter++
+                    }, 3100)
+                    intervals.push(i)
+                }, 2100)
+            } else{
+                setTimeout(function () {
+                    let counter = 0
+                    let i = setInterval(function () {
+                        if (counter % 2 == 1) {
+                            let translateMovement = "translate(0," + (windowHeight - y - height - 5) + "px)"
+                            $(correctButton).css("transform", translateMovement)
+                        } else {
+                            let translateMovement = "translate(0," + (-y + 5) + "px)"
+                            $(correctButton).css("transform", translateMovement)
+                        }
+                        counter++
+                    }, 3100)
+                    intervals.push(i)
+                }, 2100)
+            }
 
             //The function finishes with picking a new trivia question, same way as before.
             jerseyArrayIndex = Math.round(Math.random() * 99)
