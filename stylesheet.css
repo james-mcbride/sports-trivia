@@ -9,7 +9,7 @@ body{
 }
 /*#buttons{position: absolute; top: 0; right: 0; bottom: 0; left: 0;}*/
 
-#buttons, #trivia{
+#buttons, #trivia, #gameZone{
     display: none;
 }
 .col-1{
@@ -111,6 +111,26 @@ select{
 
 #newGameOptions button{
     margin: 10px 0;
+}
+
+#gameZone{
+    height: 100%;
+    max-width: 1200px;
+    max-height: 800px;
+    margin: 0 auto;
+    border: 2px solid red;
+    background-color: white;
+    z-index: 1;
+}
+html,body{
+    background-color: blue;
+}
+body{
+    position: relative;
+}
+.hoverBox{
+    position: absolute;
+    z-index: 100;
 }
 
 

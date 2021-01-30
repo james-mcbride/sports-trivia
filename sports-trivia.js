@@ -1,6 +1,39 @@
 $(document).ready(function(event) {
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
+
+    let windowWidthOffset = 0;
+    let windowHeightOffset=0;
+    if (windowWidth>1200){
+        windowWidthOffset=(windowWidth-1200)/2;
+        windowWidth=1200;
+    } else{
+    }
+    if (windowHeight>800){
+        windowHeightOffset = (windowHeight -800)/2;
+        windowHeight=800;
+        $("#gameZone").css("margin-top", windowHeightOffset-15)
+    }
+    $("#hoverBoxLeft").css({
+        width: windowWidthOffset,
+        height: windowHeight,
+        left: 0
+    })
+    $("#hoverBoxRight").css({
+        width: windowWidthOffset,
+        height: windowHeight,
+        right: 0
+    })
+    $("#hoverBoxTop").css({
+        width: windowWidth,
+        height: windowHeightOffset,
+        top: 0
+    })
+    $("#hoverBoxBottom").css({
+        width: windowWidth,
+        height: windowHeightOffset,
+        bottom: 0
+    })
     var intervals = []
     var gameCounter = 0;
 
@@ -47,7 +80,9 @@ $(document).ready(function(event) {
         $("#trivia").show()
         $("#buttons").css("display", "flex")
         $("#trivia").css("display", "flex")
+        $("#gameZone").show();
         $("#score").show()
+
 
         //will generate the random trivia question. Will randomly pick one of the 99 jersey numbers and will then randomly choose a player with
         //that jersey number. Will check to make sure that that number has not been chosen yet, then will generate the trivia question.
@@ -91,8 +126,8 @@ $(document).ready(function(event) {
             let y = getOffset(document.getElementById(jerseyNumber.toString())).top;
             let height = $(correctButton).height() + 6
             let width = $(correctButton).width() + 16
-            let initialXMovement = windowWidth - x - width - 5;
-            let initialYMovement = windowHeight - y - height-5;
+            let initialXMovement = windowWidth+windowWidthOffset - x - width - 5;
+            let initialYMovement = windowHeight+windowHeightOffset - y - height-5;
 
             //This variable will represent a random number that is either 0 or 1. This will decide if the box moves horizontal or vertical.
             let randomDirectionNumber = Math.round(Math.random());
@@ -118,10 +153,10 @@ $(document).ready(function(event) {
                     let counter = 0
                     let i = setInterval(function () {
                         if (counter % 2 == 1) {
-                            let translateMovement = "translate(" + (windowWidth - x - width - 5) + "px, 0)"
+                            let translateMovement = "translate(" + (windowWidth +windowWidthOffset - x - width - 5) + "px, 0)"
                             $(correctButton).css("transform", translateMovement)
                         } else {
-                            let translateMovement = "translate(" + (-x + 5) + "px, 0)"
+                            let translateMovement = "translate(" + (-x +windowWidthOffset+ 5) + "px, 0)"
                             $(correctButton).css("transform", translateMovement)
                         }
                         counter++
@@ -133,10 +168,10 @@ $(document).ready(function(event) {
                     let counter = 0
                     let i = setInterval(function () {
                         if (counter % 2 == 1) {
-                            let translateMovement = "translate(0," + (windowHeight - y - height - 5) + "px)"
+                            let translateMovement = "translate(0," + (windowHeight + windowHeightOffset - y - height - 5) + "px)"
                             $(correctButton).css("transform", translateMovement)
                         } else {
-                            let translateMovement = "translate(0," + (-y + 5) + "px)"
+                            let translateMovement = "translate(0," + (-y+ windowHeightOffset + 5) + "px)"
                             $(correctButton).css("transform", translateMovement)
                         }
                         counter++
@@ -177,6 +212,26 @@ $(document).ready(function(event) {
             intervals = []
         })
 
+        //will end game if you leave the playing field.
+        $(document).on("mouseover", ".hoverBox", function(){
+            //The buttons are cleared, the gameOver page is displayed, and the score is shown and compared to the high score.
+            $("#buttons").html("")
+            $("#gameScore").html($("#remaining").text())
+            if (Number($("#remaining").html()) > Number($("#highScore").html())) {
+                $("#highScore").html($("#remaining").html())
+            }
+            $("#gameOver").show()
+            $("#trivia").hide()
+            gameCounter++
+
+            //all of the setIntervals that were moving the buttons back and forth are cleared.
+            for (let j = 0; j < intervals.length; j++) {
+                clearInterval(intervals[j])
+            }
+            intervals = []
+            alert("Leaving the playing field automatically ends the game!")
+        })
+
         $("#mainMenu").click(function(event){
             event.preventDefault()
             //will display the main menu div, and hide everything else.
@@ -186,6 +241,7 @@ $(document).ready(function(event) {
 
         })
     })
+
 })
 
 
