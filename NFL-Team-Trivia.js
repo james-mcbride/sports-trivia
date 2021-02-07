@@ -97,13 +97,22 @@ $(document).ready(function(event) {
         //When one of the jersey number buttons is chosen as an answer, this function will start.
         $(".triviaButtons").click(function (event) {
             let team = $(this).attr("id");
-            console.log(team)
-            console.log(NFLTeams[divisionPicked1[0]][team])
+
             //Will check to see if the correct jersey number was chosen as an answer, and will update the score accordingly.
             if ( NFLTeams[divisionPicked1[0]][team]!==undefined) {
                 let currentRemaining = Number($("#remaining").html()) + 1
                 $("#remaining").html(currentRemaining)
                 var correctButton="#"+team;
+                teamsPicked.push(team);
+            } else{
+                for (let correctTeam in NFLTeams[divisionPicked1[0]]){
+                    if (teamsPicked.indexOf(correctTeam)===-1){
+                        var correctButton="#"+correctTeam;
+                        teamsPicked.push(correctTeam);
+                        team=correctTeam;
+                        break;
+                    }
+                }
             }
 
             //found this function on stack overflow. Creates the distance the element is from top and left of window.
@@ -119,12 +128,7 @@ $(document).ready(function(event) {
             }
 
             //creates the id for the correct jersey number button.
-            for (let team in NFLTeams[divisionPicked1]){
-                if (teamsPicked.indexOf(team)===-1){
-                    var correctButton="#"+team;
-                    teamsPicked.push(team);
-                }
-            }
+
 
             //the next several lines does the calculation for the distance the button will move to move back and forths across the page.
             let x = getOffset(document.getElementById(team)).left;
@@ -195,9 +199,9 @@ $(document).ready(function(event) {
             if (divisionsArray[divisionIndex][1]===0){
                 divisionsArray.splice(divisionIndex, 1);
             }
-            if (divisionsArray[divisionIndex][1]===0){
-                divisionsArray.splice(divisionIndex,1);
-            }
+            // if (divisionsArray[divisionIndex][1]===0){
+            //     divisionsArray.splice(divisionIndex,1);
+            // }
             $("#triviaQuestion").text(`Pick a team in the ${divisionPickedString}`)
         })
 

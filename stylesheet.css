@@ -36,7 +36,9 @@ button{
 
 #start-page{
     text-align: center;
-
+}
+#start-page div{
+    color: white;
 }
 form{
     display: flex;
