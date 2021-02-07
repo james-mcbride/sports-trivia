@@ -8,7 +8,7 @@ var NFLTeams= {
     AFC_North: {
         Steelers: ["yellow", "black"],
         Browns: ["orange", "black"],
-        Ravens: ["purple", "black"],
+        Ravens: ["purple", "gold"],
         Bengals: ["black", "orange"]
     },
     AFC_East: {
@@ -38,8 +38,8 @@ var NFLTeams= {
     },
     NFC_South: {
         Saints: ["gold", "black"],
-        Panthers: ["blue", "black"],
-        Buccaneers: ["brown", "red"],
+        Panthers: ["black", "aqua"],
+        Buccaneers: ["#5d1414", "red"],
         Falcons: ["black", "red"]
     },
     NFC_West: {

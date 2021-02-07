@@ -41,6 +41,7 @@ $(document).ready(function(event) {
     //When the start game button is clicked on the main menu screen, this function will execute.
     $(".start-button").click(function (event) {
         var divisionsArray=[];
+        teamsPicked=[];
         for (let j = 0; j < intervals.length; j++) {
             clearInterval(intervals[j])
         }
