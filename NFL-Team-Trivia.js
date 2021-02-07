@@ -54,19 +54,37 @@ $(document).ready(function(event) {
 
         //will create freshly create the 99 buttons before each game, and cancel any transforms that were created last game.
         let i = 1;
+        // for (let division in NFLTeams){
+        //     for (let team in NFLTeams[division]) {
+        //         $("#buttons").append("<div id='numbers' class='col-2'><button class='triviaButtons' id='" + team + "'>" + team + "</button></div>")
+        //         i++
+        //         let id = "#" + team
+        //         console.log(NFLTeams[division][team])
+        //         $(id).css({
+        //             "transform": "none",
+        //             "color": NFLTeams[division][team][1],
+        //             "background-color": NFLTeams[division][team][0]
+        //         })
+        //     }
+        //     divisionsArray.push([division,4]);
+        // }
+        let teamsArray=[];
         for (let division in NFLTeams){
             for (let team in NFLTeams[division]) {
-                $("#buttons").append("<div id='numbers' class='col-2'><button class='triviaButtons' id='" + team + "'>" + team + "</button></div>")
-                i++
-                let id = "#" + team
-                console.log(NFLTeams[division][team])
-                $(id).css({
-                    "transform": "none",
-                    "color": NFLTeams[division][team][1],
-                    "background-color": NFLTeams[division][team][0]
-                })
+                teamsArray.push([team, NFLTeams[division][team]])
+
             }
             divisionsArray.push([division,4]);
+        }
+        teamsArray.sort();
+        for (let i=0; i<teamsArray.length; i++ ){
+            $("#buttons").append("<div id='numbers' class='col-2'><button class='triviaButtons' id='" + teamsArray[i][0] + "'>" + teamsArray[i][0] + "</button></div>")
+            let id = "#" + teamsArray[i][0]
+            $(id).css({
+                "transform": "none",
+                "color": teamsArray[i][1][1],
+                "background-color": teamsArray[i][1][0]
+            })
         }
 
         //will set up remaining layout of page, will hide main menu, and show the buttons and trivia sections.
