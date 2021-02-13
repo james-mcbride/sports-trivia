@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+<div id="hoverBoxLeft" class="hoverBox">
+
+</div>
+<div id="hoverBoxRight" class="hoverBox">
+
+</div>
+<div id="hoverBoxTop" class="hoverBox">
+
+</div>
+<div id="hoverBoxBottom" class="hoverBox">
+
+</div>
+
+<div id="start-page">
+    <div id="gameSettings"><img height="300px" src="img/National_Football_League_logo.svg"><br>Welcome to NFL Team Trivia!</div>
+    <form class="form-inline">
+        <div class="form-group mr-2">
+           Hit Start to begin!
+        </div>
+        <button type="submit" class="btn btn-primary start-button" style="margin: 0;" id="start-button">Start</button>
+    </form>
+
+</div>
+<div id = "gameZone">
+    <div id="trivia">
+        <div><img height="40px" src="img/National_Football_League_logo.svg" style="float: left"></div>
+        <div id="triviaQuestion">Welcome to NFL Jersey Trivia! Can you answer all 99 questions? Look out for the moving
+            boxes!
+        </div>
+        <div id="score">
+            <div>Score</div>
+            <div id="remaining">0</div>
+        </div>
+        <div><img height="40px" src="img/National_Football_League_logo.svg" style="float: right"></div>
+    </div>
+    <div id="buttons" class="row hidden">
+
+    </div>
+</div>
+<div id="gameOver">
+    <h1>Game Over!</h1>
+    <div id="score-keeper" >
+        <div class="score">
+            <div class="grid">High Score</div>
+            <div id="highScore" class="grid">0</div>
+        </div>
+        <div class="score">
+            <div class="grid">Your Score</div>
+            <div class="grid" id="gameScore">0</div>
+        </div>
+    </div>
+    <div id="newGameOptions">
+        <button id="playAgain" class="start-button">
+            Play Again!
+        </button>
+        <button id="mainMenu">
+            Return to Main Menu
+        </button>
+    </div>
+</div>
+
+<script src="jquery-2.2.4.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>-->
+<script src="js/bootstrap.js"></script>
+<script src="NFL-Team-Trivia.js"></script>
+<script src="NFL-Teams.js"></script>
+</body>
+</html>

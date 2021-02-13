@@ -134,6 +134,10 @@ body{
     position: absolute;
     z-index: 100;
 }
+.title-page-images{
+    height: 300px;
+    width: 220px;
+}
 
 
 
