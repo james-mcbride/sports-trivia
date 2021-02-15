@@ -41,6 +41,7 @@ $(document).ready(function(event) {
     //When the start game button is clicked on the main menu screen, this function will execute.
     $(".start-button").click(function (event) {
         var divisionsArray=[];
+        var startingTime=2100;
         teamsPicked=[];
         for (let j = 0; j < intervals.length; j++) {
             clearInterval(intervals[j])
@@ -126,6 +127,9 @@ $(document).ready(function(event) {
                 for (let correctTeam in NFLTeams[divisionPicked1[0]]){
                     if (teamsPicked.indexOf(correctTeam)===-1){
                         var correctButton="#"+correctTeam;
+                        if (startingTime>400) {
+                            startingTime -= 200;
+                        }
                         teamsPicked.push(correctTeam);
                         team=correctTeam;
                         break;
@@ -168,6 +172,12 @@ $(document).ready(function(event) {
                 translateMovement= "translate(0," + initialYMovement + "px)";
             }
             $(correctButton).toggleClass("moving")
+            let durationTime=((startingTime+900)/1000)+"s";
+            $(correctButton).css({
+                "transition-property": "transform",
+                "transition-duration": durationTime,
+                "transition-timing-function": "linear"
+            })
             $(correctButton).css("transform", translateMovement)
 
             //adds a class to the button when it begins moving. This will be used as our detector for our hover function later on.
@@ -187,9 +197,9 @@ $(document).ready(function(event) {
                             $(correctButton).css("transform", translateMovement)
                         }
                         counter++
-                    }, 3100)
+                    }, startingTime+1000)
                     intervals.push(i)
-                }, 2100)
+                }, startingTime)
             } else{
                 setTimeout(function () {
                     let counter = 0
@@ -202,9 +212,9 @@ $(document).ready(function(event) {
                             $(correctButton).css("transform", translateMovement)
                         }
                         counter++
-                    }, 3100)
+                    }, startingTime+1000)
                     intervals.push(i)
-                }, 2100)
+                }, startingTime)
             }
 
             //The function finishes with picking a new trivia question, same way as before.

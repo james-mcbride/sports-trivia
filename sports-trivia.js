@@ -39,6 +39,7 @@ $(document).ready(function(event) {
 
     //When the start game button is clicked on the main menu screen, this function will execute.
     $(".start-button").click(function (event) {
+        let startingTime=2100;
         if($("#time-Period").val()==="2000s"){
             if ($("#time-Period").val()==="Normal"){
                 var filteredPlayersArray=playersArrayCleaned.map(number=>number.filter(player=>player[0]!=="Player" && player.length===5 && Number(player[4])>22 && Number(player[3]>2010)))
@@ -104,6 +105,10 @@ $(document).ready(function(event) {
             if (number === jerseyNumber) {
                 let currentRemaining = Number($("#remaining").html()) + 1
                 $("#remaining").html(currentRemaining)
+            } else{
+                if (startingTime>400) {
+                    startingTime -= 50;
+                }
             }
 
             //found this function on stack overflow. Creates the distance the element is from top and left of window.
@@ -141,6 +146,12 @@ $(document).ready(function(event) {
                 translateMovement= "translate(0," + initialYMovement + "px)";
             }
             $(correctButton).toggleClass("moving")
+            let durationTime=((startingTime+900)/1000)+"s";
+            $(correctButton).css({
+                "transition-property": "transform",
+                "transition-duration": durationTime,
+                "transition-timing-function": "linear"
+            })
             $(correctButton).css("transform", translateMovement)
 
             //adds a class to the button when it begins moving. This will be used as our detector for our hover function later on.
@@ -160,9 +171,9 @@ $(document).ready(function(event) {
                             $(correctButton).css("transform", translateMovement)
                         }
                         counter++
-                    }, 3100)
+                    }, startingTime+1000)
                     intervals.push(i)
-                }, 2100)
+                }, startingTime)
             } else{
                 setTimeout(function () {
                     let counter = 0
@@ -175,9 +186,9 @@ $(document).ready(function(event) {
                             $(correctButton).css("transform", translateMovement)
                         }
                         counter++
-                    }, 3100)
+                    }, startingTime+1000)
                     intervals.push(i)
-                }, 2100)
+                }, startingTime)
             }
 
             //The function finishes with picking a new trivia question, same way as before.
